@@ -1,2 +1,2 @@
 # CS61B
-UC Berkeley  CS61B (Sprint 2018)
+UC Berkeley  CS61B (Spring 2018)
