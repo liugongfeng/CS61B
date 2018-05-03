@@ -10,7 +10,7 @@ public class SLList {
         }
     }
 
-    /** Thte first item (if it exists) is at sentinel.next */
+    /** The first item (if it exists) is at sentinel.next */
     private IntNode sentinel;
     private int size;
 
