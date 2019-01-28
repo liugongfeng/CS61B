@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  *     }
  * would print get 0, 2, 4, 6. */
 
-public class KthIntList implements Iterable<Integer> {
+public class KthIntList implements Iterator<Integer> {
     public int k;
     private IntList curList;
     private boolean hasNext;
