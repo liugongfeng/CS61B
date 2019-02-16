@@ -13,7 +13,7 @@ public class Percolation {
     /**  create N-by-N grid, with all sites initial blocked. */
     public Percolation(int N) {
         if (N < 0)
-            throw new java.lang.IndexOutOfBoundsException();
+            throw new java.lang.IllegalArgumentException();
         this.status = new boolean[N][N];
         this.N = N;
         for (int i = 0; i < N; i++) {
