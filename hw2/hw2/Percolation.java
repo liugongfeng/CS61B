@@ -12,8 +12,9 @@ public class Percolation {
 
     /**  create N-by-N grid, with all sites initial blocked. */
     public Percolation(int N) {
-        if (N < 0)
+        if (N < 0) {
             throw new java.lang.IllegalArgumentException();
+        }
         this.status = new boolean[N][N];
         this.N = N;
         for (int i = 0; i < N; i++) {
@@ -22,11 +23,11 @@ public class Percolation {
             }
         }
         this.numOfOpenSites = 0;
-        this.WQU = new WeightedQuickUnionUF(N*N+2);          // two virtual node: top and down.
-        this.noBackWashWQU = new WeightedQuickUnionUF(N*N+1);    // one virtual node: top.
+        this.WQU = new WeightedQuickUnionUF(N * N + 2);          // two virtual node: top and down.
+        this.noBackWashWQU = new WeightedQuickUnionUF(N * N + 1);    // one virtual node: top.
     }
 
-    public int xyTo1D(int r, int c) {
+    private int xyTo1D(int r, int c) {
         return r * N + c;
     }
 
@@ -45,8 +46,9 @@ public class Percolation {
             }
             /** ATTENTION: noBackWashWQU do not need union last line.
              * Last line. ↓ **/
-            if (row == N - 1)
-                WQU.union(xyTo1D(row, col), N*N + 1);
+            if (row == N - 1) {
+                WQU.union(xyTo1D(row, col), N * N + 1);
+            }
         }
 
         /** if any left, right, up and down site is open, then union together. ↓ */
@@ -78,7 +80,7 @@ public class Percolation {
 
     /** Is the site(row,col) open ? **/
     public boolean isOpen(int row, int col) {
-        if (row < 0 || row > N-1 || col < 0 || col > N - 1)
+        if (row < 0 || row > N - 1 || col < 0 || col > N - 1)
             throw new IndexOutOfBoundsException();
         return status[row][col];
     }
@@ -86,10 +88,10 @@ public class Percolation {
 
     /**  Is the site(row,col) full of water? (or connected to top.)  **/
     public boolean isFull(int row, int col) {
-        if (row < 0 || row > N-1 || col < 0 || col > N - 1)
+        if (row < 0 || row > N - 1 || col < 0 || col > N - 1)
             throw new IndexOutOfBoundsException();
         else
-            return noBackWashWQU.connected(N*N, xyTo1D(row, col));
+            return noBackWashWQU.connected(N * N, xyTo1D(row, col));
     }
 
 
@@ -101,7 +103,7 @@ public class Percolation {
 
     /**  does the system percolate ?  */
     public boolean percolates() {
-        return WQU.connected(N*N, N*N+1);
+        return WQU.connected(N * N, N * N + 1);
     }
 
 
